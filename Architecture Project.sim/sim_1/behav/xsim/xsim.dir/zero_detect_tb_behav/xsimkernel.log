@@ -1,0 +1,7 @@
+Running: xsim.dir/zero_detect_tb_behav/xsimk.exe -simmode gui -wdb zero_detect_tb_behav.wdb -simrunnum 0 -socket 50634
+Design successfully loaded
+Design Loading Memory Usage: 6952 KB (Peak: 6952 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 7544 KB (Peak: 7544 KB)
+Simulation CPU Usage: 30 ms

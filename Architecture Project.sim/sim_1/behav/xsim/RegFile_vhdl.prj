@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/decoder_3to8.vhdl" \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/mux2_1.vhdl" \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/mux8_1.vhdl" \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/reg16.vhdl" \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/RegFile.vhd" \
+
+# Do not sort compile order
+nosort

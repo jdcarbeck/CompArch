@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Architecture Project.srcs/sources_1/imports/Architecture Project/decoder_3to8.vhdl" \
+"../../../../Architecture Project.srcs/sources_1/new/decider_3to8_tb.vhd" \
+
+# Do not sort compile order
+nosort
