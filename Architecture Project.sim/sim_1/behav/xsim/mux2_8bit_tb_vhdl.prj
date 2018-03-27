@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Architecture Project.srcs/sources_1/new/mux2_8bit.vhd" \
+"../../../../Architecture Project.srcs/sources_1/new/mux2_8bit_tb.vhd" \
+
+# Do not sort compile order
+nosort
