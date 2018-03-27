@@ -45,6 +45,7 @@ architecture Behavioral of RegFile is
 		A1 : IN std_logic;
 		A2 : IN std_logic;
 		A3 : IN std_logic;
+		RW : IN std_logic;
 		Q0 : OUT std_logic;
 		Q1 : OUT std_logic;
 		Q2 : OUT std_logic;
@@ -118,10 +119,10 @@ architecture Behavioral of RegFile is
             In6 => reg6_out,
             In7 => reg7_out,
             In8 => temp_out,
-            S0 => Asel(3),
-            S1 => Asel(2),
-            S2 => Asel(1),
-            S3 => Asel(0),
+            S0 => Asel(0),
+            S1 => Asel(1),
+            S2 => Asel(2),
+            S3 => Asel(3),
             Z => Adata
         ); 
      
@@ -136,19 +137,20 @@ architecture Behavioral of RegFile is
             In6 => reg6_out,
             In7 => reg7_out,
             In8 => temp_out,
-            S0 => Asel(3),
-            S1 => Asel(2),
-            S2 => Asel(1),
-            S3 => Asel(0),
+            S0 => Asel(0),
+            S1 => Asel(1),
+            S2 => Asel(2),
+            S3 => Asel(3),
             Z => Adata
         );
 	
 	Decoder: decoder_4to9 
 	   port map (
-	       A0 => Dsel(3),
-           A1 => Dsel(2),
-           A2 => Dsel(1),
-           A3 => Dsel(0),
+	       A0 => Dsel(0),
+           A1 => Dsel(1),
+           A2 => Dsel(2),
+           A3 => Dsel(3),
+           RW => RW,
            Q0 => reg0_sel,
            Q1 => reg1_sel,
            Q2 => reg2_sel,
