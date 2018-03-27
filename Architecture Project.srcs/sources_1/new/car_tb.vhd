@@ -37,9 +37,12 @@ process begin
     clk <= '1';
     wait for 10ns;
     clk <= '0';
+    wait for 10ns;
     A <= '1';
     B <= x"01";
     clk <= '1';
+    wait for 10ns;
+    clk <= '0';
     wait for 10ns;
 end process;
 
