@@ -7,12 +7,14 @@ entity Datapath is
     Port (
         DIn: in std_logic_vector(15 downto 0);
         FS: in std_logic_vector(4 downto 0);
-        ConIn: in std_logic_vector(15 downto 0);
+        ConIn: in std_logic_vector(15 downto 0); --zerofill SB
         MBSel: in std_logic;
         MDSel: in std_logic;
-        Asel : in std_logic_vector(2 downto 0);
-        Bsel : in std_logic_vector(2 downto 0);
-        Dsel : in std_logic_vector(2 downto 0);
+        PC : in std_logic_vector(15 downto 0);
+        MM : in std_logic;
+        Asel : in std_logic_vector(3 downto 0);
+        Bsel : in std_logic_vector(3 downto 0);
+        Dsel : in std_logic_vector(3 downto 0);
         Clk : in std_logic;
         AddOut: out std_logic_vector(15 downto 0); --A bus
         DataOut: out std_logic_vector(15 downto 0); --B bus
@@ -35,9 +37,9 @@ architecture Behavioral of Datapath is
 
     component RegFile
         Port ( 
-            Asel : in std_logic_vector(2 downto 0);
-            Bsel : in std_logic_vector(2 downto 0);
-            Dsel : in std_logic_vector(2 downto 0);
+            Asel : in std_logic_vector(3 downto 0);
+            Bsel : in std_logic_vector(3 downto 0);
+            Dsel : in std_logic_vector(3 downto 0);
             Clk : in std_logic;
             Ddata : in std_logic_vector(15 downto 0); --D bus
             Adata: out std_logic_vector(15 downto 0); --A bus
@@ -125,9 +127,15 @@ begin
             s => MDsel,
             Z => Data
         );
-   
-   -- Signals to the datapath enitiy 
-    AddOut <= ABus;
+
+    mm_mux: mux2_16bit
+        port map(
+            In0 => ABus,
+            In1 => PC,
+            s => MM,
+            Z => Addout
+        );
+        
     DataOut <= BBus;    
 
 
