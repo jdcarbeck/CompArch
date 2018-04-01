@@ -1,0 +1,14 @@
+TB mux 8-1
+TB micro_control
+TB control_mem
+TB mux 2_8bit
+TB DataPath
+TB Extend
+TB ZeroFill
+TB programme_cpu
+TB PC
+TB CAR
+TB MEM
+
+Implement MEM
+Implement programme_cpu
