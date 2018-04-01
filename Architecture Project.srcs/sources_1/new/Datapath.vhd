@@ -7,7 +7,7 @@ entity Datapath is
     Port (
         DIn: in std_logic_vector(15 downto 0);
         FS: in std_logic_vector(4 downto 0);
-        ConIn: in std_logic_vector(15 downto 0); --zerofill SB
+        SB: in std_logic_vector(2 downto 0);
         MBSel: in std_logic;
         MDSel: in std_logic;
         PC : in std_logic_vector(15 downto 0);
@@ -16,6 +16,7 @@ entity Datapath is
         Bsel : in std_logic_vector(3 downto 0);
         Dsel : in std_logic_vector(3 downto 0);
         Clk : in std_logic;
+        RW : in std_logic;
         AddOut: out std_logic_vector(15 downto 0); --A bus
         DataOut: out std_logic_vector(15 downto 0); --B bus
         Reg0: out std_logic_vector(15 downto 0); --reg0
@@ -41,6 +42,7 @@ architecture Behavioral of Datapath is
             Bsel : in std_logic_vector(3 downto 0);
             Dsel : in std_logic_vector(3 downto 0);
             Clk : in std_logic;
+            RW : in std_logic;
             Ddata : in std_logic_vector(15 downto 0); --D bus
             Adata: out std_logic_vector(15 downto 0); --A bus
             Bdata: out std_logic_vector(15 downto 0); --B bus
@@ -77,7 +79,15 @@ architecture Behavioral of Datapath is
         );
     end component;
     
-    signal Data, BOut, ABus, BBus, Fsig : std_logic_vector(15 downto 0);
+    component Zero_fill
+        Port ( 
+            SB : in std_logic_vector(2 downto 0);
+            zeroFill : out std_logic_vector(15 downto 0)
+        );
+    end component;
+    
+    
+    signal Data, BOut, ABus, BBus, Fsig, ConIn : std_logic_vector(15 downto 0);
     
 begin
 
@@ -86,6 +96,7 @@ begin
             Asel => Asel,
             Bsel => Bsel,
             Dsel => Dsel,
+            RW => RW,
             Clk => Clk,
             Ddata => Data,
             Adata => ABus,
@@ -136,6 +147,12 @@ begin
             Z => Addout
         );
         
+    zfill: Zero_fill
+        port map(
+            SB => SB,
+            zeroFill => ConIn
+        );
+    
     DataOut <= BBus;    
 
 

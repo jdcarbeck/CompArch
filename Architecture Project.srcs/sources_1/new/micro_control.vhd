@@ -7,6 +7,7 @@ entity micro_control is
     Port ( 
         Vflag, Cflag, Nflag, Zflag : in std_logic;
         instruction: in std_logic_vector(15 downto 0);
+        clk : in std_logic;
         
         PC : out std_logic_vector(15 downto 0);
         
@@ -96,8 +97,15 @@ architecture Behavioral of micro_control is
         );
     end component;
     
-    signal PL, PI, IL, MC, MUXS_OUT, clk, notC, notZ : std_logic;
-    signal MS : std_logic_vector(2 downto 0);
+    component Extend
+        Port ( 
+            DR_SB : in std_logic_vector(5 downto 0);
+            Ext : out std_logic_vector(15 downto 0)
+        );
+    end component;
+    
+    signal PL, PI, IL, MC, MUXS_OUT, notC, notZ : std_logic;
+    signal MS, DR_PC, SB_PC : std_logic_vector(2 downto 0);
     signal NA, IN_CAR, CON_IN, MUXC_OUT : std_logic_vector(7 downto 0);
     signal Opcode : std_logic_vector(6 downto 0);
     signal PCin : std_logic_vector(15 downto 0);
@@ -152,9 +160,9 @@ begin
             IL => IL,
             clk => clk,
             Opcode => Opcode,
-            DR => DR,
+            DR => DR_PC,
             SA => SA,
-            SB => SB
+            SB => SB_PC
         );
         
     muxs: mux8_1
@@ -172,6 +180,13 @@ begin
             S2 => MS(2),
             z => MUXS_OUT
         );
+        
+    ext0: Extend
+        port map(
+            DR_SB(2 downto 0) => SB_PC,
+            DR_SB(5 downto 3) => DR_PC,
+            Ext => PC
+        );
  
     pc0: program_count
         port map(
@@ -181,5 +196,8 @@ begin
           clk => clk,
           PCout => PC
         );
+
+    DR <= DR_PC;
+    SB <= SB_PC;
 
 end Behavioral;

@@ -7,6 +7,7 @@ entity memory is
     port (
         address: in std_logic_vector(15 downto 0);
         DataIn : in std_logic_vector(15 downto 0);
+        clk : in std_logic;
         MW : in std_logic;
         DataOut: out std_logic_vector(15 downto 0)
     );
@@ -180,9 +181,9 @@ begin
         variable addr:integer;
     begin
         addr:=conv_integer(address(8 downto 0));
-        if MW = '1' then
+        if MW = '1' and clk = '1' then
             data_mem(addr):= DataIn;
-        elsif MW = '0' then
+        elsif MW = '0' and clk = '1' then
             DataOut <= data_mem(addr) after 10ns;
         end if;
     end process;
