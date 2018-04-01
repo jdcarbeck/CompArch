@@ -8,6 +8,7 @@ entity micro_control is
         Vflag, Cflag, Nflag, Zflag : in std_logic;
         instruction: in std_logic_vector(15 downto 0);
         clk : in std_logic;
+        reset: in std_logic;
         
         PC : out std_logic_vector(15 downto 0);
         
@@ -53,6 +54,7 @@ architecture Behavioral of micro_control is
         port (
             A : in std_logic;
             clk : in std_logic;
+            reset : in std_logic;
             B : in std_logic_vector(7 downto 0);
             z : out std_logic_vector(7 downto 0)
         );
@@ -72,6 +74,7 @@ architecture Behavioral of micro_control is
             IRin : in std_logic_vector(15 downto 0);
             IL : in std_logic;
             clk : in std_logic;
+            reset : in std_logic;
             Opcode : out std_logic_vector(6 downto 0);
             DR : out std_logic_vector(2 downto 0);
             SA : out std_logic_vector(2 downto 0);
@@ -135,6 +138,7 @@ begin
         port map (
             A => MUXS_OUT,
             B => MUXC_OUT,
+            reset => reset,
             clk => clk,
             z => CON_IN
         );
@@ -158,6 +162,7 @@ begin
         port map (
             IRin => instruction,
             IL => IL,
+            reset => reset,
             clk => clk,
             Opcode => Opcode,
             DR => DR_PC,

@@ -47,7 +47,8 @@ architecture Behavioral of programme_cpu is
         Port ( 
             Vflag, Cflag, Nflag, Zflag : in std_logic;
             instruction: in std_logic_vector(15 downto 0);
-            clk :in std_logic;
+            clk : in std_logic;
+            reset : in std_logic;
             
             PC : out std_logic_vector(15 downto 0);
             
@@ -71,6 +72,7 @@ architecture Behavioral of programme_cpu is
         port (
             address: in std_logic_vector(15 downto 0);
             DataIn : in std_logic_vector(15 downto 0);
+            clk : in std_logic;
             MW : in std_logic;
             DataOut: out std_logic_vector(15 downto 0)
         );
@@ -119,6 +121,7 @@ begin
             Zflag => Zflag,
             instruction => memOut,
             clk => clk,
+            reset => reset,
             PC => pcOut,
             TD => TD,
             TA => TA,
@@ -171,6 +174,7 @@ begin
         port map(
             address => AddOut,
             DataIn => DataOut,
+            clk => clk,
             MW => MW,
             DataOut => memOut
         );
