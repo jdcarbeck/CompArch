@@ -6,7 +6,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity programme_cpu is
     Port (
         clk : in std_logic;
-        reset: in std_logic
+        reset: in std_logic;
+        reg0: out std_logic_vector(15 downto 0);
+        reg1: out std_logic_vector(15 downto 0);
+        reg2: out std_logic_vector(15 downto 0);
+        reg3: out std_logic_vector(15 downto 0);
+        reg4: out std_logic_vector(15 downto 0);
+        reg5: out std_logic_vector(15 downto 0);
+        reg6: out std_logic_vector(15 downto 0);
+        reg7: out std_logic_vector(15 downto 0)
     );
 end programme_cpu;
 
@@ -84,14 +92,14 @@ signal VFlag : std_logic;
 signal CFlag : std_logic;
 signal NFlag : std_logic;
 signal ZFlag : std_logic;
-signal Reg0 : std_logic_vector(15 downto 0); --reg0
-signal Reg1 : std_logic_vector(15 downto 0); --reg1
-signal Reg2 : std_logic_vector(15 downto 0); --reg2
-signal Reg3 : std_logic_vector(15 downto 0); --reg3
-signal Reg4 : std_logic_vector(15 downto 0); --reg4
-signal Reg5 : std_logic_vector(15 downto 0); --reg5
-signal Reg6 : std_logic_vector(15 downto 0); --reg6
-signal Reg7 : std_logic_vector(15 downto 0); --reg7
+--signal Reg0 : std_logic_vector(15 downto 0); --reg0
+--signal Reg1 : std_logic_vector(15 downto 0); --reg1
+--signal Reg2 : std_logic_vector(15 downto 0); --reg2
+--signal Reg3 : std_logic_vector(15 downto 0); --reg3
+--signal Reg4 : std_logic_vector(15 downto 0); --reg4
+--signal Reg5 : std_logic_vector(15 downto 0); --reg5
+--signal Reg6 : std_logic_vector(15 downto 0); --reg6
+--signal Reg7 : std_logic_vector(15 downto 0); --reg7
 
 signal PC : std_logic_vector(15 downto 0);
 signal TD : std_logic;
@@ -147,9 +155,9 @@ begin
             PC => pcOut,
             MM => MM,
             ASel(2 downto 0) => SA,
-            ASel(3) => TD,
+            ASel(3) => TA,
             BSel(2 downto 0) => SB,
-            BSel(3) => TD,
+            BSel(3) => TB,
             DSel(2 downto 0) => DR,
             DSel(3) => TD,
             Clk => clk,

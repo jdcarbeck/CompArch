@@ -74,7 +74,6 @@ architecture Behavioral of micro_control is
             IRin : in std_logic_vector(15 downto 0);
             IL : in std_logic;
             clk : in std_logic;
-            reset : in std_logic;
             Opcode : out std_logic_vector(6 downto 0);
             DR : out std_logic_vector(2 downto 0);
             SA : out std_logic_vector(2 downto 0);
@@ -96,19 +95,20 @@ architecture Behavioral of micro_control is
             PL : in std_logic;
             PI : in std_logic;
             clk : in std_logic;
+            reset : in std_logic;
             PCout : out std_logic_vector(15 downto 0)
         );
     end component;
     
     component Extend
         Port ( 
-            DR_SB : in std_logic_vector(5 downto 0);
+            DRSASB : in std_logic_vector(8 downto 0);
             Ext : out std_logic_vector(15 downto 0)
         );
     end component;
     
     signal PL, PI, IL, MC, MUXS_OUT, notC, notZ : std_logic;
-    signal MS, DR_PC, SB_PC : std_logic_vector(2 downto 0);
+    signal MS, DR_PC, SA_PC, SB_PC : std_logic_vector(2 downto 0);
     signal NA, IN_CAR, CON_IN, MUXC_OUT : std_logic_vector(7 downto 0);
     signal Opcode : std_logic_vector(6 downto 0);
     signal PCin : std_logic_vector(15 downto 0);
@@ -162,11 +162,10 @@ begin
         port map (
             IRin => instruction,
             IL => IL,
-            reset => reset,
             clk => clk,
             Opcode => Opcode,
             DR => DR_PC,
-            SA => SA,
+            SA => SA_PC,
             SB => SB_PC
         );
         
@@ -188,8 +187,9 @@ begin
         
     ext0: Extend
         port map(
-            DR_SB(2 downto 0) => SB_PC,
-            DR_SB(5 downto 3) => DR_PC,
+            DRSASB(2 downto 0) => SB_PC,
+            DRSASB(5 downto 3) => SA_PC,
+            DRSASB(8 downto 6) => DR_PC,
             Ext => PC
         );
  
@@ -198,11 +198,13 @@ begin
           PCin =>  PCin,
           PL => PL,
           PI => PI,
+          reset => reset,
           clk => clk,
           PCout => PC
         );
 
     DR <= DR_PC;
+    SA <= SA_PC;
     SB <= SB_PC;
 
 end Behavioral;

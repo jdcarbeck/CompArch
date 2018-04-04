@@ -26,10 +26,10 @@ begin
         if(reset = '1') then current := x"C0";
         elsif(A = '1' and clk = '1') then current := B;
         elsif(A = '0' and clk = '1') then
-            temp_current := conv_integer(current);
-            temp_current := temp_current + conv_integer(1);
-            temp_currentpp := conv_std_logic_vector(temp_current, 8);
-            current := temp_currentpp;
+--            temp_current := conv_integer(current);
+--            temp_current := temp_current + conv_integer(1);
+--            temp_currentpp := conv_std_logic_vector(temp_current, 8);
+--            current := temp_currentpp;
         end if;
         z <= current after 20ns;
     end process;

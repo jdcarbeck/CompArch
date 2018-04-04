@@ -12,7 +12,6 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
-Compiling package ieee.numeric_std
 Compiling architecture behavioral of entity xil_defaultlib.program_count [program_count_default]
 Compiling architecture behavioral of entity xil_defaultlib.program_count_tb
 Built simulation snapshot program_count_tb_behav
