@@ -18,13 +18,14 @@ architecture Behavioral of program_count is
 
 begin
 
-    process (reset, PL, PI, clk)
+    process (clk)
     variable pc : std_logic_vector(15 downto 0);
     variable temp_pc : integer;
     variable temp_inc_pc : std_logic_vector(15 downto 0);
     
     begin
-        if(reset = '1' and clk = '1') then pc := x"0000";
+        if(reset = '1' and clk = '1') then 
+            pc := x"0000";
         elsif(PL = '1' and clk = '1') then
             pc := pc + PCin;
         elsif(PI = '1' and clk = '1') then
@@ -33,6 +34,6 @@ begin
             temp_inc_pc := conv_std_logic_vector(temp_pc, 16);
             pc := temp_inc_pc;
         end if;
-        PCout <= pc after 2ns;
+        PCout <= pc after 10ns;
     end process;
 end Behavioral;

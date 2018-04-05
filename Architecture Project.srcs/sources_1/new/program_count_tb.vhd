@@ -48,7 +48,7 @@ process begin
     wait for 10ns;
     clk <= '0';
     wait for 10ns;
-    PCin <= x"0002";
+    PCin <= x"0001";
     PL <= '0';
     PI <= '1';
     clk <= '1';

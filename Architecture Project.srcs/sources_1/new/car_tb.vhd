@@ -35,7 +35,7 @@ begin
 
 process begin
     A <= '0';
-    B <= x"00";
+    B <= x"01";
     reset <= '1';
     clk <= '1';
     wait for 10ns;
@@ -52,6 +52,13 @@ process begin
    
     A <= '1';
     B <= x"01";
+    clk <= '1';
+    wait for 10ns;
+    clk <= '0';
+    wait for 10ns;
+    
+    A <= '0';
+    B <= x"02";
     clk <= '1';
     wait for 10ns;
     clk <= '0';

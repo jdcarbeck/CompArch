@@ -141,7 +141,7 @@ architecture Behavioral of RegFile is
             S1 => Asel(1),
             S2 => Asel(2),
             S3 => Asel(3),
-            Z => Adata
+            Z => Bdata
         );
 	
 	Decoder: decoder_4to9 

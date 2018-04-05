@@ -22,6 +22,14 @@ entity micro_control is
         MM : out std_logic;
         MW : out std_logic;
         
+        --for testing
+        PL : out std_logic;
+        PI : out std_logic;
+        IL : out std_logic;
+        MC : out std_logic;
+        MS : out std_logic_vector(2 downto 0);
+        NA : out std_logic_vector(7 downto 0);
+        
         DR : out std_logic_vector(2 downto 0);
         SA : out std_logic_vector(2 downto 0);
         SB : out std_logic_vector(2 downto 0)
@@ -40,12 +48,14 @@ architecture Behavioral of micro_control is
         TB: out std_logic;
         TA: out std_logic;
         TD: out std_logic;
+        
         PL: out std_logic;
         PI: out std_logic;
         IL: out std_logic;
         MC: out std_logic;
         MS: out std_logic_vector(2 downto 0);
         NA: out std_logic_vector(7 downto 0);
+        
         IN_CAR: in std_logic_vector(7 downto 0)
       );
     end component;
@@ -107,16 +117,31 @@ architecture Behavioral of micro_control is
         );
     end component;
     
-    signal PL, PI, IL, MC, MUXS_OUT, notC, notZ : std_logic;
-    signal MS, DR_PC, SA_PC, SB_PC : std_logic_vector(2 downto 0);
-    signal NA, IN_CAR, CON_IN, MUXC_OUT : std_logic_vector(7 downto 0);
+    signal PL_out, PI_out, IL_out, MC_out : std_logic;
+    signal MS_out : std_logic_vector(2 downto 0);
+    signal NA_out : std_logic_vector(7 downto 0);
+    
+    
+--    signal IL : std_logic; 
+--    siganl MC : std_logic; 
+    signal MUXS_OUT : std_logic; 
+    signal notC : std_logic; 
+    signal notZ : std_logic;
+--    signal MS : std_logic_vector(2 downto 0); 
+    signal DR_PC : std_logic_vector(2 downto 0); 
+    signal SA_PC : std_logic_vector(2 downto 0);
+    signal SB_PC : std_logic_vector(2 downto 0);
+--    signal NA : std_logic_vector(7 downto 0); 
+    signal IN_CAR : std_logic_vector(7 downto 0);
+    signal MUXC_OUT : std_logic_vector(7 downto 0);
     signal Opcode : std_logic_vector(6 downto 0);
     signal PCin : std_logic_vector(15 downto 0);
+
 begin
 
     control_memory0: control_memory
         port map (
-            IN_CAR => CON_IN,
+            IN_CAR => IN_CAR,
             MW => MW,
             MM => MM,
             RW => RW,
@@ -126,12 +151,13 @@ begin
             TB => TB,
             TA => TA,
             TD => TD,
-            PL => PL,
-            PI => PI,
-            IL => IL,
-            MC => MC,
-            MS => MS,
-            NA => NA
+            
+            PL => PL_out,
+            PI => PI_out,
+            IL => IL_out,
+            MC => MC_out,
+            MS => MS_out,
+            NA => NA_out
         );
     
     car0: car
@@ -140,7 +166,7 @@ begin
             B => MUXC_OUT,
             reset => reset,
             clk => clk,
-            z => CON_IN
+            z => IN_CAR
         );
     
     muxc: mux2_8bit
@@ -153,15 +179,15 @@ begin
             B(5) => Opcode(5),
             B(6) => Opcode(6),
             B(7) => '0',
-            A => NA,
-            sel => MC,
+            A => NA_out,
+            sel => MC_out,
             z => MUXC_OUT
         );
 
     ir0: instruction_reg
         port map (
             IRin => instruction,
-            IL => IL,
+            IL => IL_out,
             clk => clk,
             Opcode => Opcode,
             DR => DR_PC,
@@ -179,9 +205,9 @@ begin
             In5 => NFlag,
             In6 => notC,
             In7 => notZ,
-            S0 => MS(0),
-            S1 => MS(1),
-            S2 => MS(2),
+            S0 => MS_out(0),
+            S1 => MS_out(1),
+            S2 => MS_out(2),
             z => MUXS_OUT
         );
         
@@ -190,21 +216,27 @@ begin
             DRSASB(2 downto 0) => SB_PC,
             DRSASB(5 downto 3) => SA_PC,
             DRSASB(8 downto 6) => DR_PC,
-            Ext => PC
+            Ext => PCin
         );
  
     pc0: program_count
         port map(
           PCin =>  PCin,
-          PL => PL,
-          PI => PI,
+          PL => PL_out,
+          PI => PI_out,
           reset => reset,
           clk => clk,
           PCout => PC
         );
 
+    PL <= PL_out;
+    PI <= PI_out;
+    IL <= IL_out;
+    MC <= MC_out;
+    MS <= MS_out;
+    NA <= NA_out;
     DR <= DR_PC;
     SA <= SA_PC;
     SB <= SB_PC;
-
+-- add a signal that holds the last PC so when clk and not load is called its not rea
 end Behavioral;

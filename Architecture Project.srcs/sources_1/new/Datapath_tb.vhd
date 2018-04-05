@@ -103,7 +103,7 @@ begin
     Din <= x"0000";
     RW <= '1';
     MM <= '0';
-    MBSel <= '1';
+    MBSel <= '0';
     PC <= x"0000";
     MDSel <= '1';
     Dsel <= "0000";
