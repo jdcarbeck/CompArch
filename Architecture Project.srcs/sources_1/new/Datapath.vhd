@@ -27,6 +27,7 @@ entity Datapath is
         Reg5: out std_logic_vector(15 downto 0); --reg5
         Reg6: out std_logic_vector(15 downto 0); --reg6
         Reg7: out std_logic_vector(15 downto 0);  --reg7
+        temp_reg: out std_logic_vector(15 downto 0);
         VFlag: out std_logic;
         CFlag: out std_logic;
         NFlag: out std_logic;
@@ -53,7 +54,8 @@ architecture Behavioral of Datapath is
             Reg4: out std_logic_vector(15 downto 0); --reg4
             Reg5: out std_logic_vector(15 downto 0); --reg5
             Reg6: out std_logic_vector(15 downto 0); --reg6
-            Reg7: out std_logic_vector(15 downto 0)  --reg7
+            Reg7: out std_logic_vector(15 downto 0);  --reg7
+            temp: out std_logic_vector(15 downto 0) --temp_reg
         );
     end component;
 
@@ -108,7 +110,8 @@ begin
             Reg4 => Reg4,
             Reg5 => Reg5,
             Reg6 => Reg6,
-            Reg7 => Reg7
+            Reg7 => Reg7,
+            temp => temp_reg
         );
      
    fu: Functional_unit

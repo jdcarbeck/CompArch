@@ -1,6 +1,6 @@
 Vivado Simulator 2017.4
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto c140929358a94edca39154cd9b8ece5a --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot program_count_tb_behav xil_defaultlib.program_count_tb -log elaborate.log 
+Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto c140929358a94edca39154cd9b8ece5a --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Datapath_tb_behav xil_defaultlib.Datapath_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -12,6 +12,22 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
-Compiling architecture behavioral of entity xil_defaultlib.program_count [program_count_default]
-Compiling architecture behavioral of entity xil_defaultlib.program_count_tb
-Built simulation snapshot program_count_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.reg16 [reg16_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux9_16bit [mux9_16bit_default]
+Compiling architecture behavioral of entity xil_defaultlib.decoder_4to9 [decoder_4to9_default]
+Compiling architecture behavioral of entity xil_defaultlib.RegFile [regfile_default]
+Compiling architecture behavioral of entity xil_defaultlib.logic_unit [logic_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.full_adder [full_adder_default]
+Compiling architecture behavioral of entity xil_defaultlib.arithmetic_circuit [arithmetic_circuit_default]
+Compiling architecture behavioral of entity xil_defaultlib.Mux2_1 [mux2_1_default]
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.zero_detect [zero_detect_default]
+Compiling architecture behavioral of entity xil_defaultlib.ALU_16bit [alu_16bit_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux3_1 [mux3_1_default]
+Compiling architecture behavioral of entity xil_defaultlib.LR_shifter_16bit [lr_shifter_16bit_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux2_16bit [mux2_16bit_default]
+Compiling architecture behavioral of entity xil_defaultlib.Functional_unit [functional_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.Zero_fill [zero_fill_default]
+Compiling architecture behavioral of entity xil_defaultlib.Datapath [datapath_default]
+Compiling architecture behavioral of entity xil_defaultlib.datapath_tb
+Built simulation snapshot Datapath_tb_behav

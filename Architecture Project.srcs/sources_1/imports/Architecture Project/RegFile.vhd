@@ -4,24 +4,24 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity RegFile is
-Port ( 
-	Asel : in std_logic_vector(3 downto 0);
-    Bsel : in std_logic_vector(3 downto 0);
-	Dsel : in std_logic_vector(3 downto 0);
-	Clk : in std_logic;
-	RW: in std_logic;
-	Ddata : in std_logic_vector(15 downto 0); --D bus
-    Adata: out std_logic_vector(15 downto 0); --A bus
-    Bdata: out std_logic_vector(15 downto 0); --B bus
-    Reg0: out std_logic_vector(15 downto 0); --reg0
-    Reg1: out std_logic_vector(15 downto 0); --reg1
-    Reg2: out std_logic_vector(15 downto 0); --reg2
-    Reg3: out std_logic_vector(15 downto 0); --reg3
-    Reg4: out std_logic_vector(15 downto 0); --reg4
-    Reg5: out std_logic_vector(15 downto 0); --reg5
-    Reg6: out std_logic_vector(15 downto 0); --reg6
-    Reg7: out std_logic_vector(15 downto 0); --reg7
-    temp: out std_logic_vector(15 downto 0)  --temp reg
+    Port ( 
+        Asel : in std_logic_vector(3 downto 0);
+        Bsel : in std_logic_vector(3 downto 0);
+        Dsel : in std_logic_vector(3 downto 0);
+        Clk : in std_logic;
+        RW: in std_logic;
+        Ddata : in std_logic_vector(15 downto 0); --D bus
+        Adata: out std_logic_vector(15 downto 0); --A bus
+        Bdata: out std_logic_vector(15 downto 0); --B bus
+        Reg0: out std_logic_vector(15 downto 0); --reg0
+        Reg1: out std_logic_vector(15 downto 0); --reg1
+        Reg2: out std_logic_vector(15 downto 0); --reg2
+        Reg3: out std_logic_vector(15 downto 0); --reg3
+        Reg4: out std_logic_vector(15 downto 0); --reg4
+        Reg5: out std_logic_vector(15 downto 0); --reg5
+        Reg6: out std_logic_vector(15 downto 0); --reg6
+        Reg7: out std_logic_vector(15 downto 0); --reg7
+        temp: out std_logic_vector(15 downto 0)  --temp reg
     );
 end RegFile;
 

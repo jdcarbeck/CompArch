@@ -18,7 +18,7 @@ end CAR;
 architecture Behavioral of CAR is
 
 begin      
-    process(reset, B, clk)
+    process(reset, clk)
     variable current : std_logic_vector(7 downto 0);
     variable temp_current : integer;
     variable temp_currentpp : std_logic_vector(7 downto 0);
@@ -31,6 +31,6 @@ begin
 --            temp_currentpp := conv_std_logic_vector(temp_current, 8);
 --            current := temp_currentpp;
         end if;
-        z <= current after 20ns;
+        z <= current after 10ns;
     end process;
 end Behavioral;

@@ -32,7 +32,7 @@ begin
                 --0
                 --0: Load value from instruction SB 
                 --1: Load value next in memory into register
-                x"C020306" ,x"C02000E", x"C02018C", x"0000000",
+                x"C020306" ,x"C02000E", x"C02018C", x"FFFFFFF",
                 x"0000000" ,x"0000000", x"0000000", x"0000000",          
                 x"0000000" ,x"0000000", x"0000000", x"0000000",   
                 x"0000000" ,x"0000000", x"0000000", x"0000000",
