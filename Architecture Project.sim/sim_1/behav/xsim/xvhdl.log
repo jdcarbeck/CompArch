@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "U:/2nd Year/Architecture Project/Architecture Project.srcs/sources_1/new/micro_control_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity micro_control_tb
+INFO: [VRFC 10-163] Analyzing VHDL file "U:/2nd Year/Architecture Project/Architecture Project.srcs/sources_1/new/programme_cpu_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity programme_cpu_tb

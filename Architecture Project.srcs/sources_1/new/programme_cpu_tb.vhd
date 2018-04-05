@@ -25,6 +25,12 @@ architecture Behavioral of programme_cpu_tb is
     end component;
     signal clk, reset : std_logic := '0';
     signal reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7 : std_logic_vector(15 downto 0);
+
+
+    constant clk_period : time := 40ns;
+    constant cycles : integer := 0;
+    constant max_cycles : integer := 1000;
+
 begin
 
 
@@ -42,34 +48,18 @@ begin
             reg7 => reg7
         );
 
-    process
-        begin
-            reset <= '1';
-            clk <= '1';
-            wait for 50 ns;
-            reset <= '0';
-            clk <= '0';
-            wait for 50 ns;
-            clk <= '1';
-            wait for 50ns;
-            clk <= '0';
-            wait for 50ns;
-            clk <= '1';
-            wait for 50ns;
-            clk <= '0';
-            wait for 50ns;
-            clk <= '1';
-            wait for 50ns;
-            clk <= '0';
-            wait for 50ns;
-            clk <= '1';
-            wait for 50ns;
-            clk <= '0';
-            wait for 50ns;
-            clk <= '1';
-            wait for 50ns;
-            clk <= '0';
-            wait for 50ns;
-
-    end process;
+process
+    begin
+        reset <= '1';
+        clk <= '1';
+        wait for 50 ns;
+        reset <= '0';
+        clk <= '0';
+        while cycles < max_cycles loop
+            clk <= not clk;
+            wait for clk_period/2;
+        end loop;
+        wait;
+end process;
+    
 end Behavioral;
