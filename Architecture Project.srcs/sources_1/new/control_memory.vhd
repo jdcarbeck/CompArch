@@ -32,7 +32,10 @@ begin
                 --0
                 --0: Load value from instruction SB 
                 --1: Load value next in memory into register
-                x"C020306" ,x"C02020E", x"01201F0", x"C02018C",
+                --2: Shift value to the left by 1
+                --3: SUB 
+                --4: BLT
+                x"C020306" ,x"C02400E", x"C020184", x"C020054",
                 x"0000000" ,x"0000000", x"0000000", x"0000000",          
                 x"0000000" ,x"0000000", x"0000000", x"0000000",   
                 x"0000000" ,x"0000000", x"0000000", x"0000000",

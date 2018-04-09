@@ -115,7 +115,7 @@ process
         reset <= '0';
         wait for 50ns;
         
-        instruction <= x"0000";
+        instruction <= x"0200";
         
         clk <= '1';
         wait for 50ns;

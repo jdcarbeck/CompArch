@@ -113,7 +113,7 @@ begin
     Clk <= '0';
     
     --R1 = 1
-    Din <= x"0002";
+    Din <= x"00f0";
     MDSel <= '1';
     Dsel <= "0001";
     wait for 50ns;
@@ -122,7 +122,7 @@ begin
     Clk <= '0';
     
     --R2 = 2
-    Din <= x"0003";
+    Din <= x"0005";
     MDSel <= '1';
     Dsel <= "0010";
     wait for 50ns;

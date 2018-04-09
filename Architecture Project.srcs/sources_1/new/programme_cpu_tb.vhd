@@ -27,7 +27,7 @@ architecture Behavioral of programme_cpu_tb is
     signal reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7 : std_logic_vector(15 downto 0);
 
 
-    constant clk_period : time := 40ns;
+    constant clk_period : time := 50ns;
     constant cycles : integer := 0;
     constant max_cycles : integer := 1000;
 

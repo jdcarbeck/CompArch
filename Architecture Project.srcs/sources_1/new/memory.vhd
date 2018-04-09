@@ -31,16 +31,15 @@ begin
             x"001E", --9    nextValue = 0x1E = 30
             x"02C0", --10   LDR R3, nextValue   
             x"0020", --11   nextValue = 0x20 = 32 
-            x"0600", --12   LSL R0, #3 (LSL R0, #1 * 3)
-            x"0600", --13   
-            x"0600", --14   
+            x"0400", --12   LSL R0, #3 (LSL R0, #1 * 3)
+            x"0400", --13   
+            x"0400", --14   
 
             --16
-            x"0000", --15   SUB R0, R5 
-            x"0000", --16   Branch 22 if N
+            x"0619", --15   SUB R1, R0, R1 
+            x"0000", --16   Branch +3 if R0 is neg
             x"0000", --17   INC R2
-            x"0000", --18   SUB R0, R0, R5
-            x"0000", --19   Branch 17
+            x"0000", --19   Branch -3
             x"0000", --20   ADD R0, R0, R3
             x"0000", --21   LDR R1 nextValue
             x"0000", --22   nextValue = storingAddress
@@ -52,6 +51,7 @@ begin
             x"0000",
             x"0000",
             x"0000",
+            x"0000", 
             --32
             x"0000",x"0000",x"0000",x"0000",
             x"0000",x"0000",x"0000",x"0000",

@@ -112,7 +112,7 @@ architecture Behavioral of micro_control is
     
     component Extend
         Port ( 
-            DRSASB : in std_logic_vector(8 downto 0);
+            DRSB : in std_logic_vector(5 downto 0);
             Ext : out std_logic_vector(15 downto 0)
         );
     end component;
@@ -213,9 +213,8 @@ begin
         
     ext0: Extend
         port map(
-            DRSASB(2 downto 0) => SB_PC,
-            DRSASB(5 downto 3) => SA_PC,
-            DRSASB(8 downto 6) => DR_PC,
+            DRSB(2 downto 0) => SB_PC,
+            DRSB(5 downto 3) => DR_PC,
             Ext => PCin
         );
  
